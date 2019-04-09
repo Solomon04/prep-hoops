@@ -5,10 +5,10 @@ This application allows you to:
 - Organize tasks into categories
 - Check your daily stats
 
-### Tutorial
+### Application Demonstration
 _Here is a demonstration of my TODO app_
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/jNQXAC9IVRw/0.jpg)](https://www.youtube.com/watch?v=jNQXAC9IVRw) 
+[![TOOO App Demo](https://img.youtube.com/vi/_HyoieS3rs4/0.jpg)](https://www.youtube.com/watch?v=_HyoieS3rs4) 
 
 ### Getting Started
 _Download the repo directly or using git_

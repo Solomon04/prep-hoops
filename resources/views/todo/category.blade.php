@@ -19,12 +19,7 @@
                 <h1><a href="?date={{$date - 1}}">&#8249;</a>  {{$day->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a></h1>
             @endif
         </div>
-        <form class="input-group mb-3" action="{{route('search.todo')}}" method="get">
-            <input type="text" class="form-control" name="query" placeholder="Search all todo items" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Submit</button>
-            </div>
-        </form>
+        @include('todo.components.form')
         <hr>
         <div class="row">
 
