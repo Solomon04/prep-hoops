@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,11 +24,25 @@ class AccountController extends Controller
 
     }
 
-    public function stats()
+    public function stats(Request $request)
     {
         /** @var User $user */
         $user = Auth::user();
-        return view('stats')->with('stats', $user->getStats());
+        $today = Carbon::today();
+        $date = $today->add($request->date, 'day');
+        $total = $user->todoItem()->where('deadline', '=', $date->toDateString())->count();
+        $completed = $user->todoItem()->where('deadline', '=', $date->toDateString())
+            ->where('completed', '=', true)
+            ->count();
+        if($total == 0){
+            $rate = '0%';
+        }else{
+            $rate = number_format( $completed/$total * 100, 2 ) . '%';
+        }
+        $stats['total_tasks'] = $total;
+        $stats['completed_tasks'] = $completed;
+        $stats['success_rate'] = $rate;
+        return view('stats')->with('stats', $stats)->with('day', $date);;
     }
 
     public function updateAvatar(Request $request)

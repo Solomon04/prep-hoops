@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('todo.components.view')
     @include('todo.components.filter')
     @php
         if(!request()->has('date')){
@@ -30,7 +31,7 @@
                 <div class="col-4">
                     <div class="card-deck">
                         <div class="card w-33 my-3">
-                            <div class="card-body" @if($todo->complete)style="color: grey"@endif>
+                            <div class="card-body" @if($todo->completed)style="opacity: .6"@endif>
                                 <h2 class="card-title" style="text-decoration: underline">{{$todo->title}}</h2>
                                 <h4 class="card-title">{{$todo->category->name}}</h4>
                                 <p class="card-text">{{$todo->description}}</p>

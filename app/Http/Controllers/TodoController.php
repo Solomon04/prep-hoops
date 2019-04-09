@@ -29,21 +29,29 @@ class TodoController extends Controller
             $today = Carbon::today();
             $date = $today->add($request->date, 'day');
             $todo = $user->todoItem()->where('deadline', '=', $date->toDateString())->get();
-            return view('todo.index')->with('todos', $todo)->with('categories', $user->category)->with('day', $date);
+            return view('todo.category')->with('todos', $todo)->with('categories', $user->category)->with('day', $date);
+        }
+
+        if($request->has('view')){
+            if($request->view){
+                $date = Carbon::today();
+                $todo = $user->todoItem()->where('deadline', '=', $date->toDateString())->get();
+                return view('todo.index')->with('todos', $todo)->with('categories', $user->category);
+            }
         }
 
         if($request->has('completed')){
             $todo = $user->todoItem()->where('completed', '=', $request->completed);
-            return view('todo.index')->with('todos', $todo)->with('categories', $user->category);
+            return view('todo.category')->with('todos', $todo)->with('categories', $user->category);
         }
 
         if($request->has('category')){
             $todo = $user->todoItem()->where('category_id', '=', $request->category)->get();
-            return view('todo.index')->with('todos', $todo)->with('categories', $user->category);
+            return view('todo.category')->with('todos', $todo)->with('categories', $user->category);
         }
         $date = Carbon::today();
         $todo = $user->todoItem()->where('deadline', '=', $date->toDateString())->get();
-        return view('todo.index')->with('todos', $todo)->with('categories', $user->category);
+        return view('todo.category')->with('todos', $todo)->with('categories', $user->category);
     }
 
     public function create(Request $request)
