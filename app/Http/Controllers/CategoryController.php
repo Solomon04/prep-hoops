@@ -94,8 +94,9 @@ class CategoryController extends Controller
 
     public function delete(Request $request)
     {
-        /** @var Category $todo */
+        /** @var Category $category */
         $category = Category::findorFail($request->id);
+        $category->todoItem()->delete();
         $category->delete();
         return back()->with('error', 'Category Removed');
     }
