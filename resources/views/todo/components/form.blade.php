@@ -33,7 +33,7 @@
                     <label for="deadline" class="col-md-12 col-form-label text-md-center">{{ __('Deadline Date') }}</label>
 
                     <div class="col-md-12">
-                        <input id="deadline"  type="date" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="deadline"  required autofocus>
+                        <input id="deadline" type="date" @if(isset($day)) value="{{$day->toDateString()}}" @else value="{{Carbon\Carbon::today('America/Chicago')->toDateString()}}"  @endif class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="deadline"  required autofocus>
                     </div>
                 </div>
 
@@ -62,3 +62,6 @@
         Add TODO
     </button>
 </div>
+<script>
+    document.getElementById('deadline').value = new Date().toDateInputValue();
+</script>

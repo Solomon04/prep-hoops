@@ -41,7 +41,7 @@
                 <label for="deadline" class="col-md-12 col-form-label text-md-center">{{ __('Deadline Date') }}</label>
 
                 <div class="col-md-12">
-                    <input id="deadline"  type="date" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="deadline"  required autofocus>
+                    <input id="deadline" value="{{$todo->deadline}}" type="date" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="deadline"  required autofocus>
                 </div>
             </div>
 

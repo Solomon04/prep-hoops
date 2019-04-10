@@ -14,7 +14,7 @@
         <div class="text-center">
             @if(!isset($day))
 
-                <h1> <a href="?date={{$date - 1}}">&#8249;</a>  {{\Carbon\Carbon::today()->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a>   </h1>
+                <h1> <a href="?date={{$date - 1}}">&#8249;</a>  {{\Carbon\Carbon::today('America/Chicago')->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a>   </h1>
             @else
                 <h1><a href="?date={{$date - 1}}">&#8249;</a>  {{$day->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a></h1>
             @endif

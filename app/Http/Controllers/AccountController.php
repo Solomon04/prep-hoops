@@ -28,7 +28,7 @@ class AccountController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-        $today = Carbon::today();
+        $today = Carbon::today('America/Chicago');
         $date = $today->add($request->date, 'day');
         $total = $user->todoItem()->where('deadline', '=', $date->toDateString())->count();
         $completed = $user->todoItem()->where('deadline', '=', $date->toDateString())

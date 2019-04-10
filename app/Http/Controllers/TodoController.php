@@ -26,7 +26,7 @@ class TodoController extends Controller
         $user = Auth::user();
 
         if($request->has('date')){
-            $today = Carbon::today();
+            $today = Carbon::today('America/Chicago');
             $date = $today->add($request->date, 'day');
             $todo = $user->todoItem()->where('deadline', '=', $date->toDateString())->get();
             return view('todo.category')->with('todos', $todo)->with('categories', $user->category)->with('day', $date);
@@ -34,7 +34,7 @@ class TodoController extends Controller
 
         if($request->has('view')){
             if($request->view){
-                $date = Carbon::today();
+                $date = Carbon::today('America/Chicago');
                 $todo = $user->todoItem()->where('deadline', '=', $date->toDateString())->get();
                 return view('todo.index')->with('todos', $todo)->with('categories', $user->category);
             }
@@ -49,7 +49,7 @@ class TodoController extends Controller
             $todo = $user->todoItem()->where('category_id', '=', $request->category)->get();
             return view('todo.category')->with('todos', $todo)->with('categories', $user->category);
         }
-        $date = Carbon::today();
+        $date = Carbon::today('America/Chicago');
         $todo = $user->todoItem()->where('deadline', '=', $date->toDateString())->get();
         return view('todo.category')->with('todos', $todo)->with('categories', $user->category);
     }

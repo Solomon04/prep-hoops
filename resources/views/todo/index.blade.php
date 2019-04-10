@@ -14,7 +14,7 @@
     <div class="container">
         <div class="text-center">
             @if(!isset($day))
-                <h1> <a href="?date={{$date - 1}}">&#8249;</a>  {{\Carbon\Carbon::today()->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a>   </h1>
+                <h1> <a href="?date={{$date - 1}}">&#8249;</a>  {{\Carbon\Carbon::today('America/Chicago')->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a>   </h1>
             @else
                 <h1><a href="?date={{$date - 1}}">&#8249;</a>  {{$day->toFormattedDateString('mm/dd/yy')}} <a href="?date={{$date + 1}}">&#8250;</a></h1>
             @endif
@@ -84,7 +84,7 @@
                                 <label for="deadline" class="col-md-12 col-form-label text-md-center">{{ __('Deadline Date') }}</label>
 
                                 <div class="col-md-12">
-                                    <input id="deadline"  type="date" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="deadline"  required autofocus>
+                                    <input id="deadline" value="{{$date}}" type="date" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="deadline"  required autofocus>
                                 </div>
                             </div>
 
