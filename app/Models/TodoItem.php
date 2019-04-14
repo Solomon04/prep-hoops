@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int category_id
  * @property string deadline
  * @property bool completed
+ * @property bool recurring
  * @property User user
  * @property Category category
  */
@@ -37,5 +39,26 @@ class TodoItem extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function duplicate()
+    {
+        $todoItem = new TodoItem();
+        $todoItem->title = $this->title;
+        $todoItem->description = $this->description;
+        $todoItem->category_id = $this->category_id;
+        $todoItem->deadline = Carbon::today()->toDateString();
+        $todoItem->save();
+    }
+
+    public function tomorrow()
+    {
+        $todoItem = new TodoItem();
+        $todoItem->title = $this->title;
+        $todoItem->user_id = $this->user_id;
+        $todoItem->description = $this->description;
+        $todoItem->category_id = $this->category_id;
+        $todoItem->deadline = Carbon::tomorrow()->toDateString();
+        $todoItem->save();
     }
 }

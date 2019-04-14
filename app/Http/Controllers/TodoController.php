@@ -63,12 +63,18 @@ class TodoController extends Controller
             'deadline'=> 'required',
             'description' => 'required',
         ]);
+        if($request->has('recurring')){
+            $recurring = true;
+        } else{
+            $recurring = false;
+        }
         $user->todoItem()->create([
             'user_id' => $user->id,
             'title' => $validator['title'],
             'category_id' => $request->category,
             'description' => $validator['description'],
-            'deadline' => $validator['deadline']
+            'deadline' => $validator['deadline'],
+            'recurring' => $recurring
         ]);
         return redirect()->route('view.todo')->with('success', 'TODO Item Created!');
     }
@@ -139,5 +145,13 @@ class TodoController extends Controller
             ->orWhere('description', 'like', "%$query%")
             ->paginate(12);
         return view('todo.results')->with('todos', $todos);
+    }
+
+    public function tomorrow($id)
+    {
+        /** @var TodoItem $todo */
+        $todo = TodoItem::findorFail($id);
+        $todo->tomorrow();
+        return back()->with('success', 'TODO added for tomorrow');
     }
 }

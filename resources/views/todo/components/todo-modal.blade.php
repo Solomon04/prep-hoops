@@ -18,6 +18,7 @@
                         {{ Form::open(['method' => 'DELETE', 'route' => ['delete.todo', 'id' => $todo->id]]) }}
                         {{ Form::submit('Remove', ['class' => 'btn btn-danger my-2']) }}
                         {{ Form::close() }}
+                        <a href="{{route('duplicate.todo', ['id' => $todo->id])}}" class="btn btn-secondary">Add Tomorrow</a>
                         @if(!$todo->completed)
                             <a href="{{route('complete.todo', ['id' => $todo->id])}}" class="btn btn-success btn-lg btn-block my-3">
                                 Mark As Complete

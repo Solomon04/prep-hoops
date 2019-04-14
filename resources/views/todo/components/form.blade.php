@@ -45,6 +45,14 @@
                     </div>
                 </div>
 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="recurring" value=1 id="recurring">
+                    <label class="form-check-label" for="recurring">
+                        Recurring?
+                    </label>
+                </div>
+
+
                 <div class="form-group row mb-4">
                     <div class="col-md-12 ">
                         <button type="submit" class="btn btn-primary">

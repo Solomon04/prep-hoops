@@ -26,6 +26,7 @@ Route::get('todo/{id}', 'TodoController@read')->name('edit.todo');
 Route::get('search', 'TodoController@search')->name('search.todo');
 Route::get('complete/{id}', 'TodoController@complete')->name('complete.todo');
 Route::get('incomplete/{id}', 'TodoController@incomplete')->name('incomplete.todo');
+Route::get('tomorrow/{id}', 'TodoController@tomorrow')->name('duplicate.todo');
 
 
 Route::get('categories', 'CategoryController@index')->name('view.category');
