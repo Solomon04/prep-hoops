@@ -22,7 +22,7 @@ class ApiController extends Controller
         if($request->has('date')){
             $date = $request->date;
         }else{
-            $date = Carbon::today('America/Chicago');
+            $date = Carbon::yesterday('America/Chicago');
         }
         /** @var User $user */
         $user = Auth::user();
