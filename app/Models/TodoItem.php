@@ -58,7 +58,7 @@ class TodoItem extends Model
         $todoItem->user_id = $this->user_id;
         $todoItem->description = $this->description;
         $todoItem->category_id = $this->category_id;
-        $todoItem->deadline = Carbon::tomorrow()->toDateString();
+        $todoItem->deadline = Carbon::tomorrow('America/Chicago')->toDateString();
         $todoItem->save();
     }
 }
