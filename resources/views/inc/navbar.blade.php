@@ -15,6 +15,9 @@
                         <a class="nav-link" style="font-size: 1.25em" href="{{route('view.todo')}}">My TODO</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" style="font-size: 1.25em" href="{{route('view.goal')}}">Goals</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" style="font-size: 1.25em" href="{{route('stats')}}">Stats</a>
                     </li>
                     <li class="nav-item">

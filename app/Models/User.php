@@ -59,6 +59,11 @@ class User extends Authenticatable
         return $this->hasMany(TodoItem::class);
     }
 
+    public function goal()
+    {
+        return $this->hasMany(Goal::class);
+    }
+
     public function getStats()
     {
         $stats = [];

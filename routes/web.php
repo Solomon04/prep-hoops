@@ -28,6 +28,13 @@ Route::get('complete/{id}', 'TodoController@complete')->name('complete.todo');
 Route::get('incomplete/{id}', 'TodoController@incomplete')->name('incomplete.todo');
 Route::get('tomorrow/{id}', 'TodoController@tomorrow')->name('duplicate.todo');
 
+Route::get('goal', 'GoalController@index')->name('view.goal');
+Route::post('goal', 'GoalController@create')->name('create.goal');
+Route::delete('goal', 'GoalController@delete')->name('delete.goal');
+Route::post('goal/{id}', 'GoalController@update')->name('update.goal');
+Route::get('goal/{id}', 'GoalController@read')->name('edit.goal');
+Route::get('complete/goal/{id}', 'GoalController@complete')->name('complete.goal');
+Route::get('incomplete/goal/{id}', 'GoalController@incomplete')->name('incomplete.goal');
 
 Route::get('categories', 'CategoryController@index')->name('view.category');
 Route::post('category', 'CategoryController@create')->name('create.category');
